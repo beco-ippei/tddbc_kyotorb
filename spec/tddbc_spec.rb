@@ -1,38 +1,44 @@
 require 'tddbc'
 
 describe 'tddbc' do
+  before do
+    @vender = Vender.new
+  end
 
-  [10, 50, 100, 500, 1000].each do |fee|
-    it "not expect error on #{fee}" do
-      vender = Vender.new
-      expect { vender.insert fee }.not_to raise_error
+  describe '#insert' do
+    subject {@vender.insert}
+    [10, 50, 100, 500, 1000].each do |fee|
+      it "not expect error on #{fee}" do
+        expect { fee }.not_to raise_error
+      end
+    end
+
+    it 'insert any times ' do
+      3.times.each do
+        expect { 10 }.not_to raise_error
+      end
     end
   end
 
-  it 'insert any times ' do
-    vender = Vender.new
-    3.times.each do
-      expect { vender.insert 10 }.not_to raise_error
+  describe '#total' do
+    it 'can calcurate total charge' do
+
+      @vender.insert 10
+      @vender.insert 10
+      @vender.insert 100
+
+      expect(@vender.total).to eq 120
     end
   end
 
-  it 'can calcurate total charge' do
-    vender = Vender.new
+  describe '#pay_back' do
+    it 'return ...' do
 
-    vender.insert 10
-    vender.insert 10
-    vender.insert 100
+      @vender.insert 10
+      @vender.insert 10
+      @vender.insert 100
 
-    expect(vender.total).to eq 120
-  end
-
-  it 'return ...' do
-    vender = Vender.new
-
-    vender.insert 10
-    vender.insert 10
-    vender.insert 100
-
-    expect(vender.pay_back).to eq 120
+      expect(@vender.pay_back).to eq 120
+    end
   end
 end
