@@ -1,21 +1,17 @@
-
 class Vender
-	
   def initialize
     @charge = 0
   end
 
   def insert(money)
-  	@charge += money
+    @charge += money
   end
 
   def total
-  	@charge
+    @charge
   end
 
   def pay_back
-  	@charge
+    @charge
   end
 end
-
-#Vender.new.vend ARGV[0].to_i

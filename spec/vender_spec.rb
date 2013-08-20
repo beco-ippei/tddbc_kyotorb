@@ -1,4 +1,4 @@
-require 'tddbc'
+require 'vender'
 
 describe 'tddbc' do
   before do
